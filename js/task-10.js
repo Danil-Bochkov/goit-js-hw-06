@@ -19,7 +19,6 @@ function createBoxes(amount) {
     size += 10;
   }
   boxesElements.insertAdjacentHTML("beforeend", boxes.join(""));
-  console.log(boxes);
 }
 
 btnCreate.addEventListener('click', () => {
