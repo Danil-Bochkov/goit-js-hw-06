@@ -15,20 +15,15 @@ const images = [
 
 const imagesEl = document.querySelector('.gallery');
 
-imagesEl.style.display = "flex";
-imagesEl.style.justifyContent = "space-evenly";
+  imagesEl.style.display = "flex";
+  imagesEl.style.justifyContent = "space-evenly";
   imagesEl.style.listStyleType = "none";
 
+  const widthEl = 300;
+  const heightEl = 200;
 
-const imageOfItemEl = images.forEach(image => {
-  const ItemEl = document.createElement('li');
-  const imageEl = document.createElement('img');
-
-  imageEl.src = image.url;
-  imageEl.alt = image.alt;
-  imageEl.width = "300"
-  imageEl.height = "200"
-
-  ItemEl.appendChild(imageEl);
-  imagesEl.append(ItemEl);
-})
+const imageOfItemEl = images
+  .map((element) => `<li><img src="${element.url}" alt="${element.alt}" width="${widthEl}" height="${heightEl}"></li>`)
+  .join("");
+          
+  imagesEl.insertAdjacentHTML("beforeend", imageOfItemEl);

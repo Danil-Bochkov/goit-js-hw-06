@@ -10,17 +10,16 @@ const boxesElements = document.querySelector('#boxes');
 
 function createBoxes(amount) { 
   let size = 30;
+  const boxes = [];
   for (let i = 0; i < amount; i++) {
-    let color = getRandomHexColor();
-    let element = document.createElement('div');
-    
-    element.style.width = size + "px";
-    element.style.height = size + "px";
-    element.style.backgroundColor = color;
+    const color = getRandomHexColor();
+    const element = `<div style="background-color: ${color}; width:${size}px; height:${size}px;"></div>`
 
-    boxesElements.appendChild(element);
+    boxes.push(element);
     size += 10;
   }
+  boxesElements.insertAdjacentHTML("beforeend", boxes.join(""));
+  console.log(boxes);
 }
 
 btnCreate.addEventListener('click', () => {
@@ -32,5 +31,5 @@ btnDestroy.addEventListener('click', () => {
 });
 
 function destroyBoxes() {
-  boxesElements.textContent = "";
+  boxesElements.innerHTML = "";
 }
